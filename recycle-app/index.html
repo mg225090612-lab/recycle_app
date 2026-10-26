@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#16a34a" />
+  <title>분리수거 도우미</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>♻️ 분리수거 도우미</h1>
+    <p class="sub">쓰레기를 카메라에 비추면 어떻게 버릴지 알려드려요</p>
+  </header>
+
+  <main>
+    <section class="camera">
+      <video id="video" playsinline muted></video>
+      <div class="frame" aria-hidden="true"></div>
+      <div id="overlay" class="overlay">
+        <button id="startBtn" class="primary">카메라 시작</button>
+        <p id="status" class="status"></p>
+      </div>
+      <button id="flipBtn" class="flip" title="카메라 전환" hidden>🔄</button>
+    </section>
+
+    <section id="result" class="result idle" aria-live="polite">
+      <div class="result-head">
+        <span id="icon" class="icon">📷</span>
+        <div>
+          <div id="label" class="label">대기 중</div>
+          <div id="confidence" class="confidence"></div>
+        </div>
+      </div>
+      <ul id="tips" class="tips"></ul>
+    </section>
+
+    <section class="bars" id="bars"></section>
+  </main>
+
+  <canvas id="crop" width="224" height="224" hidden></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.3/dist/teachablemachine-image.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
